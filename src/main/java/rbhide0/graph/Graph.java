@@ -29,6 +29,14 @@ public class Graph {
         }
     }
 
+    /**
+     * Returns all the vertices in this graph.
+     * @return all vertices in this graph.
+     */
+    public Set<Vertex> getVertices() {
+        return Collections.unmodifiableSet(_adjacencyList.keySet());
+    }
+
     public boolean containsEdge(Vertex v1, Vertex v2) {
         boolean containsEdge = false;
         if (containsVertex(v1) && containsVertex(v2)) {

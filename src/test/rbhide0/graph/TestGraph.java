@@ -19,6 +19,9 @@ public class TestGraph extends TestCase {
         Vertex v4 = new DefaultVertex("v4");
         Vertex v5 = new DefaultVertex("v5");
 
+        // Vertex not in the graph.
+        Vertex v6 = new DefaultVertex("v6");
+
         // Add vertices.
         graph.addVertex(v1);
         graph.addVertex(v2);
@@ -39,6 +42,30 @@ public class TestGraph extends TestCase {
         assertTrue(graph.containsVertex(v3));
         assertTrue(graph.containsVertex(v4));
         assertTrue(graph.containsVertex(v5));
+        assertFalse(graph.containsVertex(v6));
+
+        // Test the getVertices() call.
+        Set<Vertex> vertices = graph.getVertices();
+        assertEquals(5, vertices.size());
+        assertTrue(vertices.contains(v1));
+        assertTrue(vertices.contains(v2));
+        assertTrue(vertices.contains(v3));
+        assertTrue(vertices.contains(v4));
+        assertTrue(vertices.contains(v5));
+        assertFalse(vertices.contains(v6));
+
+        // Test that getVertices() returns an unmodifiable object.
+        try {
+            vertices.add(v6);
+            // Add operation succeeded, when it shouldn't have.
+            assertTrue(false);
+        } catch (UnsupportedOperationException e) {
+            // This is the expected scenario.
+            assertTrue(true);
+        } catch (Throwable t) {
+            // Not an expected scenario.
+            assertTrue(false);
+        }
 
         // Test edges.
         assertTrue(graph.containsEdge(v1, v2));
@@ -73,6 +100,19 @@ public class TestGraph extends TestCase {
         assertEquals(2, edges5.size());
         assertTrue(edges5.contains(v1));
         assertTrue(edges5.contains(v2));
+
+        // Test that getEdges() returns an unmodifiable object.
+        try {
+            edges5.add(v3);
+            // If we reach here, there is an error.
+            assertTrue(false);
+        } catch (UnsupportedOperationException e) {
+            // We expect this exception.
+            assertTrue(true);
+        } catch (Throwable e) {
+            // Not what we expected.
+            assertTrue(false);
+        }
 
         // Test statistics.
         assertEquals(5, graph.getNumVertices());
