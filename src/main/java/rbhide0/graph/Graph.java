@@ -55,7 +55,7 @@ public class Graph {
 
     public Set<Vertex> getEdges(Vertex v) {
         Set<Vertex> edges = _adjacencyList.get(v);
-        return (edges == null) ? null : Collections.unmodifiableSet(edges);
+        return (edges == null) ? (Set<Vertex>) Collections.EMPTY_SET : Collections.unmodifiableSet(edges);
     }
 
     public int getNumVertices() {

@@ -8,7 +8,7 @@ import java.util.List;
  * whose methods are all synchronized. Our implementation's
  * underlying data structure is non-synchronized.
  *
- * @param <T> Element to be stored in the stack.
+ * @param <T> Element type to be stored in the stack.
  */
 public class Stack<T> {
     private List<T> _list;
