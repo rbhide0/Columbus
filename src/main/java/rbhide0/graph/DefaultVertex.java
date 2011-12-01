@@ -41,4 +41,8 @@ public class DefaultVertex implements Vertex {
     public int hashCode() {
         return _label == null ? 0 : _label.hashCode();
     }
+
+    public String toString() {
+        return getLabel().toString();
+    }
 }

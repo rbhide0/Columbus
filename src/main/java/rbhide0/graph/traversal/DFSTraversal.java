@@ -8,6 +8,8 @@ import java.util.*;
 
 /**
  * @author Ravi Bhide
+ *
+ * TODO: make this traversal work on disconnected graphs as well.
  */
 public class DFSTraversal implements Traversal {
     private Graph _graph;
@@ -89,12 +91,6 @@ public class DFSTraversal implements Traversal {
                 unvisitedNeighbor = _start;
             }
         }
-
-//        if (unvisitedNeighbor != null) {
-//            // We have an unvisited vertex.
-//            _vertexColor.put(unvisitedNeighbor, Color.GRAY);
-//            _stack.push(unvisitedNeighbor);
-//        }
 
         return unvisitedNeighbor;
     }
